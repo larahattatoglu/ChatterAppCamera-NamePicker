@@ -3,7 +3,7 @@ import {useState} from 'react';
 import { FiEdit } from 'react-icons/fi';
 
 
-// the component decleration
+// the component declaration
 export default function NamePicker(props) {
     // this is the state of the name itself
     const [name, setName] = useState('')
@@ -11,13 +11,13 @@ export default function NamePicker(props) {
     const [showInput, setShowInput] = useState(false)
     
   
-
+    /// sets username when pressing ok button
     function ok() {
         props.setUsername(name);
         setShowInput(false);
 
     }
-    
+    // if input is true then set name to value
     if (showInput) {
         return (
         
@@ -38,6 +38,7 @@ export default function NamePicker(props) {
         );
     
     }
+    // returns input for username
     return (
     <div className = 'name-picker'> 
         <span className = "name-picker-name" > {name || "Set Username: " }</span>
