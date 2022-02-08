@@ -1,4 +1,3 @@
-import react from "react";
 import "./TextInput.css";
 import { useState } from "react";
 import { FiSend, FiCamera } from 'react-icons/fi';
