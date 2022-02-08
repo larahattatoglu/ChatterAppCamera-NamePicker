@@ -1,29 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
-import react from 'react';
-import TextInput from "./TextInput";
-import {useState} from 'react';
+import TextInput from './TextInput';
+import { useState } from 'react';
+import Camera from 'react-snap-pic';
+import Header from './Header';
 
-function App() {
+// useState creates a variable called messages //
+// setMessages is a function that updates the message//
+
+
+  function App() {
   const [messages, setMessages] = useState([]);
+  const [showCamera, setShowCamera] = useState(false);
+
   function sendMessage(msg) {
-    setMessages([...messages,msg]);
+    console.log(msg);
+    setMessages([msg, ...messages]);
   }
-  console.log(messages)
+
+  console.log(messages);
+ 
+  // function that adds camera to messages
+  function takePicture(img) {
+    console.log(img)
+    setShowCamera(false)
+  }
+
   return (
     <div className="App">
-      <header className = "header">
-        <img className = "logo"/>
-        <span className= "title"> Chatter!</span>
-      </header>
-      <div className = "messages"> 
-        {messages.map((msg)=> {
-          return <div className = "message" > {msg} </div>;
-
+      {showCamera && <Camera takePicture={takePicture} />}
+      <Header />
+      <div className ='messages'> 
+        {messages.map((msg)=>{
+          return <div className='message'>{msg}</div>;
         })}
-       </div>
-      <TextInput sendMessage={sendMessage} size="50"/>
-    </div>
+      </div>
+      <TextInput sendMessage={sendMessage} 
+        showCamera={()=>setShowCamera(true)}
+      />
+     </div>
+     
   );
 }
 
